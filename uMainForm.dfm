@@ -464,60 +464,10 @@ object frmMain: TfrmMain
     4A1AC07DFCC97170445E39700278E33006F015B88C3F390E8EC83481B3C19BA0
     FD00E25F036E0531FCA9717044762640EBFF3FA765C010FCF7E0317039891F18
     FE1F70EE79E982983ADE0000000049454E44AE426082}
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object cxGrid1: TcxGrid
-    Left = 0
-    Top = 73
-    Width = 521
-    Height = 241
-    Align = alClient
-    TabOrder = 0
-    LockedStateImageOptions.Text = 'Por favor aguarde...'
-    object cxGrid1DBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      FilterBox.CustomizeButtonAlignment = fbaLeft
-      FindPanel.InfoText = 'Insira '
-      ScrollbarAnnotations.CustomAnnotations = <>
-      DataController.DataSource = dsMain
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      NewItemRow.InfoText = 'Clique aqui para adicionar uma nova linha'
-      OptionsData.Deleting = False
-      OptionsData.Editing = False
-      OptionsData.Inserting = False
-      OptionsSelection.CellSelect = False
-      OptionsSelection.MultiSelect = True
-      OptionsView.NoDataToDisplayInfoText = 'Sem dados para exibir'
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-      object cxGrid1DBTableView1DIA: TcxGridDBColumn
-        DataBinding.FieldName = 'DIA'
-        HeaderAlignmentHorz = taCenter
-        Options.AutoWidthSizable = False
-      end
-      object cxGrid1DBTableView1TIME: TcxGridDBColumn
-        DataBinding.FieldName = 'TIME'
-        PropertiesClassName = 'TcxTimeEditProperties'
-        Properties.Alignment.Horz = taCenter
-        HeaderAlignmentHorz = taCenter
-        Options.AutoWidthSizable = False
-      end
-      object cxGrid1DBTableView1MESSAGE: TcxGridDBColumn
-        DataBinding.FieldName = 'MESSAGE'
-        HeaderAlignmentHorz = taCenter
-        Width = 300
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
-    end
-  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -527,7 +477,7 @@ object frmMain: TfrmMain
     BevelOuter = bvNone
     Caption = 'Panel1'
     ShowCaption = False
-    TabOrder = 1
+    TabOrder = 0
     object Label1: TLabel
       Left = 8
       Top = 8
@@ -570,6 +520,42 @@ object frmMain: TfrmMain
       Value = 0
     end
   end
+  object grLog: TDBGrid
+    Left = 0
+    Top = 73
+    Width = 521
+    Height = 241
+    Align = alClient
+    DataSource = dsMain
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'DIA'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'TIME'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'MESSAGE'
+        Title.Alignment = taCenter
+        Visible = True
+      end>
+  end
   object tray: TTrayIcon
     Hint = 'SyncMySQL'
     BalloonHint = 'Ainda estou executando em plano de fundo!'
@@ -610,6 +596,7 @@ object frmMain: TfrmMain
     Left = 392
     Top = 152
     object mtMainDIA: TDateField
+      DisplayLabel = 'Dia'
       FieldName = 'DIA'
     end
     object mtMainTIME: TTimeField
@@ -624,7 +611,11 @@ object frmMain: TfrmMain
   end
   object dsMain: TDataSource
     DataSet = mtMain
-    Left = 360
+    Left = 336
     Top = 152
+  end
+  object FDQuery1: TFDQuery
+    Left = 240
+    Top = 168
   end
 end

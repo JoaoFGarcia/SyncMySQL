@@ -35,13 +35,17 @@ var
   Branch     : string;
 
   stream     : TFileStream;
+
+  Flags : Word;
 begin
   try
     try
-      if not FileExists(GetCurrentDir + '\config.json') then
-        FileCreate(GetCurrentDir + '\config.json');
+      Flags := fmOpenRead;
 
-      stream := TFileStream.Create(GetCurrentDir + '\config.json', fmOpenRead or fmShareDenyRead);
+      if not FileExists(GetCurrentDir + '\config.json') then
+        Flags := Flags or fmCreate;
+
+      stream := TFileStream.Create(GetCurrentDir + '\config.json', Flags);
 
       if stream.Size > 0 then
       begin
@@ -50,10 +54,7 @@ begin
       end;
 
       JSonValue := TJSonObject.ParseJSONValue(JSONString);
-      Result := JSonValue.GetValue<string>(Path);
-
-      if Result = EmptyStr then
-        Result := DefaultValue;
+      Result := JSonValue.GetValue<string>(Path, DefaultValue);
     except
       Result := DefaultValue;
     end;

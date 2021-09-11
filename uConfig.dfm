@@ -3,12 +3,12 @@ object frmConfig: TfrmConfig
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Configura'#231#245'es'
-  ClientHeight = 206
-  ClientWidth = 399
+  ClientHeight = 204
+  ClientWidth = 393
   Color = clBtnFace
-  Constraints.MaxHeight = 245
+  Constraints.MaxHeight = 260
   Constraints.MaxWidth = 415
-  Constraints.MinHeight = 245
+  Constraints.MinHeight = 260
   Constraints.MinWidth = 415
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -469,7 +469,6 @@ object frmConfig: TfrmConfig
     4A1AC07DFCC97170445E39700278E33006F015B88C3F390E8EC83481B3C19BA0
     FD00E25F036E0531FCA9717044762640EBFF3FA765C010FCF7E0317039891F18
     FE1F70EE79E982983ADE0000000049454E44AE426082}
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -477,13 +476,13 @@ object frmConfig: TfrmConfig
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 399
+    Width = 393
     Height = 129
     Align = alTop
     Caption = 'Conex'#227'o'
     TabOrder = 0
     DesignSize = (
-      399
+      393
       129)
     object Label1: TLabel
       Left = 16
@@ -530,7 +529,7 @@ object frmConfig: TfrmConfig
     object edtPassword: TEdit
       Left = 271
       Top = 43
-      Width = 121
+      Width = 119
       Height = 21
       PasswordChar = '*'
       TabOrder = 2
@@ -552,7 +551,7 @@ object frmConfig: TfrmConfig
       OnClick = btnTestClick
     end
     object btnGravar: TButton
-      Left = 320
+      Left = 309
       Top = 88
       Width = 75
       Height = 25
@@ -565,7 +564,7 @@ object frmConfig: TfrmConfig
   object GroupBox2: TGroupBox
     Left = 0
     Top = 129
-    Width = 399
+    Width = 393
     Height = 72
     Align = alTop
     Caption = 'Backup'
@@ -580,12 +579,12 @@ object frmConfig: TfrmConfig
     object edtPath: TEdit
       Left = 16
       Top = 43
-      Width = 339
+      Width = 329
       Height = 21
       TabOrder = 0
     end
     object Button1: TButton
-      Left = 360
+      Left = 352
       Top = 41
       Width = 35
       Height = 25
@@ -598,7 +597,7 @@ object frmConfig: TfrmConfig
     FavoriteLinks = <>
     FileTypes = <>
     Options = [fdoPickFolders]
-    Left = 304
-    Top = 136
+    Left = 120
+    Top = 24
   end
 end

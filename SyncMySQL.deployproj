@@ -1,0 +1,270 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="Win32\Debug\SyncMySQL.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>SyncMySQL.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="$(BDS)\Redist\Win64\rtl270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>rtl270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxCoreRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxCoreRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\xmlrtl270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>xmlrtl270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxGDIPlusRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxGDIPlusRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\cxExportRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>cxExportRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vcldb270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vcldb270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\DBXCommonDriver270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>DBXCommonDriver270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxComnRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxComnRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\cxLibraryRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>cxLibraryRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vclWinX270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vclWinX270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\dbexpress270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dbexpress270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="Win64\Release\libmysql.dll" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>libmysql.dll</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Win64\Debug\SyncMySQL.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>SyncMySQL.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vcl270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vcl270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="Win64\Release\SyncMySQL.exe" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>SyncMySQL.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vclimg270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vclimg270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxServerModeRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxServerModeRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vclie270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vclie270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\cxGridRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>cxGridRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxSpreadSheetRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxSpreadSheetRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="C:\Program Files (x86)\DevExpress\VCL\Library\RS27\Win64\dxSpreadSheetCoreRS27.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dxSpreadSheetCoreRS27.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vcledge270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vcledge270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\dbrtl270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>dbrtl270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\bindengine270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>bindengine270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\Win64\vclx270.bpl" Condition="'$(Config)'=='Release'">
+            <RemoteDir>SyncMySQL\</RemoteDir>
+            <RemoteName>vclx270.bpl</RemoteName>
+            <DeployClass>DependencyPackage</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+</Project>

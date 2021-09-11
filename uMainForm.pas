@@ -7,15 +7,12 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, System.Win.TaskbarCore,
   Vcl.Taskbar, Vcl.StdCtrls, Vcl.Menus, Vcl.AppEvnts,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, FireDAC.Stan.Intf,
+ FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.WinXPickers, dxCore, cxGridStrs, Vcl.Samples.Spin,
-  uGlobal, DateUtils, FireDac.DApt, cxTimeEdit;
+  FireDAC.Comp.Client, Vcl.WinXPickers, Vcl.Samples.Spin,
+  uGlobal, DateUtils, FireDac.DApt, Vcl.Grids, Vcl.DBGrids, Data.DB,
+  FireDAC.Stan.Async;
 
 type
   TState = (stRunning, stPaused, stTerminated, stIdle);
@@ -26,9 +23,6 @@ type
     appEvents: TApplicationEvents;
     Sair1: TMenuItem;
     Restaurar1: TMenuItem;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
     Panel1: TPanel;
     Label1: TLabel;
     btnAlternar: TButton;
@@ -38,10 +32,9 @@ type
     mtMainDIA: TDateField;
     mtMainTIME: TTimeField;
     mtMainMESSAGE: TStringField;
-    cxGrid1DBTableView1DIA: TcxGridDBColumn;
-    cxGrid1DBTableView1TIME: TcxGridDBColumn;
-    cxGrid1DBTableView1MESSAGE: TcxGridDBColumn;
     edtMinutes: TSpinEdit;
+    grLog: TDBGrid;
+    FDQuery1: TFDQuery;
     procedure appEventsMinimize(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure Restaurar1Click(Sender: TObject);
@@ -139,6 +132,10 @@ begin
   mtMain.CreateDataSet;
   if TGlobal.Interval > 0 then
     edtMinutes.Value := TGlobal.Interval div 60000;
+
+  Application.UpdateFormatSettings := false;
+  FormatSettings.DecimalSeparator := '.';
+  Application.UpdateFormatSettings := true;
 end;
 
 procedure TfrmMain.Restaurar1Click(Sender: TObject);
@@ -190,6 +187,7 @@ begin
     Connection.Params.UserName := TGlobal.DB.Username;
     Connection.Params.Password := TGlobal.DB.Password;
     Connection.Params.Database := TGlobal.DB.Database;
+    Query.FormatOptions.StrsTrim2Len := True;
     Query.Connection           := Connection;
     Query.SQL.Text             := 'SELECT TABLE_NAME AS TABLE_NAME'+
                                   '  FROM INFORMATION_SCHEMA.TABLES'+
@@ -199,7 +197,10 @@ begin
     Query.Open();
 
     if Query.IsEmpty then
+    begin
+      Log('Não há tabelas para copiar, encerrando processo...');
       Exit;
+    end;
 
     Query.First;
     while not (Query.Eof) do
@@ -214,6 +215,12 @@ begin
     begin
       Sleep(iInterval);
 
+      if frmMain.WindowState = wsMinimized then
+      begin
+        frmMain.tray.BalloonHint := 'Realizando cópia de segurança.';
+        frmMain.tray.ShowBalloonHint;
+      end;
+
       Mount.Clear;
 
       if State in [stRunning] then
@@ -222,7 +229,6 @@ begin
         Mount.Add('-- SyncMysql Backup');
         Mount.Add('--   Host:     ' + TGlobal.DB.host);
         Mount.Add('--   Database: ' + TGlobal.DB.Database);
-        Mount.Add('--   Data: ' + TGlobal.DB.host);
         Mount.add('-- Triggered: ' + FormatDateTime('dd/mm/yyyy hh:mm', Now));
 
         Connection.Open;
@@ -263,9 +269,14 @@ begin
             begin;
               Value := EmptyStr;
 
+              //if Uppercase(Query.Fields[i].FieldName) = 'PERCENTAGE' then
+              //begin
+              //  Log(IntToStr( Ord( Query.Fields[i].DataType ) ));
+              //end;
+
               if Query.Fields[i].DataType in [ftInteger] then
                 value := IntToStr(Query.Fields[i].AsInteger)
-              else if Query.Fields[i].DataType in [ftFloat] then
+              else if Query.Fields[i].DataType in [ftFloat, ftCurrency, ftBCD] then
                 value := FloatToStr(Query.Fields[i].AsFloat)
               else
                 value := QuotedStr(Query.Fields[i].AsString);
@@ -318,9 +329,5 @@ begin
       frmMain.mtMain.EnableControls
     end);
 end;
-
-initialization
-
-cxSetResourceString(@scxGridGroupByBoxCaption, 'Arraste um campo para agrupar');
 
 end.

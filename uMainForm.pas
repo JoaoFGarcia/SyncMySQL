@@ -322,8 +322,8 @@ begin
     begin
       frmMain.mtMain.DisableControls;
       frmMain.mtMain.Insert;
-      frmMain.mtMainDIA.AsDateTime := Date;
-      frmMain.mtMainTIME.AsDateTime := Time;
+      frmMain.mtMainDIA.AsDateTime   := Date;
+      frmMain.mtMainTIME.AsDateTime  := Time;
       frmMain.mtMainMESSAGE.AsString := sMessage;
       frmMain.mtMain.Post;
       frmMain.mtMain.EnableControls
